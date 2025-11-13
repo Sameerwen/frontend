@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crash Course</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <h1>Crash Course Lessons</h1>
+
+    <!-- Search & Sort -->
+    <input type="text" v-model="searchQuery" placeholder="Search lessons..." />
+    <select v-model="sortKey">
+      <option value="subject">Subject</option>
+      <option value="location">Location</option>
+      <option value="price">Price</option>
+      <option value="spaces">Spaces</option>
+    </select>
+    <button @click="toggleOrder">Toggle Order</button>
+
+    <!-- Lesson List -->
+    <div v-if="!showCart">
+      <ul>
+        <li v-for="lesson in filteredLessons" :key="lesson._id">
+          <img :src="'images/' + lesson.icon" alt="Lesson Icon" />
+          <h3>{{ lesson.subject }}</h3>
+          <p>Location: {{ lesson.location }}</p>
+          <p>Price: £{{ lesson.price }}</p>
+          <p>Spaces Left: {{ lesson.spaces }}</p>
+          <button @click="addToCart(lesson)" :disabled="lesson.spaces===0">
+            Add to Cart
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Cart -->
+    <div v-else>
+      <h2>Your Cart</h2>
+      <ul>
+        <li v-for="(item,index) in cart" :key="item._id+'-'+index">
+          {{ item.subject }} x {{ item.quantity }} - £{{ item.price * item.quantity }}
+          <button @click="removeFromCart(index)">Remove</button>
+        </li>
+      </ul>
+
+      <h3>Total: £{{ cartTotal }}</h3>
+
+      <h3>Checkout</h3>
+      <input v-model="name" placeholder="Your Name" />
+      <input v-model="phone" placeholder="Phone Number" />
+      <button @click="checkout" :disabled="!validForm || cart.length===0">Submit Order</button>
+      <p v-if="orderConfirmed" style="color:green;">✅ Order submitted!</p>
+    </div>
+
+    <button @click="toggleCart" :disabled="cart.length===0 && !showCart">
+      {{ showCart ? 'Back to Lessons' : 'View Cart' }}
+    </button>
+  </div>
+
+  <script src="https://unpkg.com/vue@3"></script>
+  <script type="module" src="api.mjs"></script>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
