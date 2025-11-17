@@ -1,4 +1,4 @@
-import { getLessons, postOrder, updateLessonSpaces, searchLessons } from './api.mjs';
+import { getLessons, postOrder, updateLessonSpaces, searchLessons } from './api.js';
 const { createApp } = Vue;
 
 createApp({
