@@ -75,7 +75,7 @@ ul {
 li {
   display: flex;
   align-items: center;
-  padding: 12px;
+  padding: 16px;
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
