@@ -80,6 +80,7 @@ li {
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fafafa;
+  gap: 15px;
 }
 
 li img {
