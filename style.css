@@ -91,6 +91,11 @@ li img {
   border-radius: 8px;
 }
 
+li button {
+    margin-left: auto;    
+  padding: 10px 18px;
+}
+
 /* Cart list */
 .cart-item {
   display: flex;
