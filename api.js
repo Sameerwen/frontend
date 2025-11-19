@@ -1,5 +1,5 @@
 // Change this if you deploy your backend online
-const BASE_URL = 'http://localhost:5500';  
+const BASE_URL = 'https://backend-vp34.onrender.com/lessons';  
 
 // Fetch all lessons from backend
 export async function getLessons() {
