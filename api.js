@@ -1,4 +1,4 @@
-// Change this if you deploy your backend online
+// Deployed backend online
 const BASE_URL = 'https://backend-vp34.onrender.com';  
 
 // Fetch all lessons from backend
